@@ -35,7 +35,7 @@ let sdate = params.get('startdate');
 var items;
 if (project.includes("ROAD")) {
   items = ["", "Site Preparation", "Earthworks and Grading", "Drainage and Utilities", "Subbase and Base Course Construction", "Paving", "Curbs, Gutters, and Sidewalks", "Guardrails and Barriers", "Traffic Control Devices", "Quality Control and Testing", "Final Touches", "Others"]
-} else if (project.includes("REPLACE")) {
+} else if (project.includes("TILE")) {
   items = ["", "Preparation", "Removing Damaged Tiles", "Preparing the Surface", "Applying Adhesive", "Placing the New Tile", "Grouting", "Cleaning and Finishing", "Sealing", "Final Inspection", "Others"]
 } else if (project.includes("BUILDING")) {
   items = ["", "Site Preparation", "Foundation Work", "Structural Framework", "Roof Construction", "Wall Construction", "Windows and Doors", "Mechanical, Electrical, and Plumbing (MEP) Work", "Interior Finishes", "Exterior Finishes", "Final Inspections and Handover", "Others"]
@@ -53,9 +53,12 @@ if (project.includes("ROAD")) {
   items = ["", "Site Preparation and Demolition", "Structural Work", "Plumbing and Electrical Work", "HVAC Installation", "Framing and Drywall", "Flooring Installation", "Painting and Finishing", "Install Fixtures and Fittings", "Final Inspection and Touch-Ups", "Clean-Up and Final Preparation", "Others"]
 } else if (project.includes("FACILITY")) {
   items = ["", "Assessment and Planning", "Site Preparation", "Structural Work", "Plumbing and Electrical Work", "HVAC Installation", "Isolation and Safety Features", "Interior Finishes", "Install Fixtures and Equipment", "Final Inspection and Testing", "Clean-Up and Preparation for Use", "Others"]
+} else if (project.includes("WALL")) {
+  items = ["", "Site Preparation", "Foundation and Footings", "Wall Framing or Formwork", "Wall Construction", "Insulation and Moisture Barriers", "Exterior Finishes", "Interior Finishes", "Utility Installations", "Inspection and Quality Control", "Final Touches", "Others"]
 } else {
-  items = ["", "Site Preparation", "Excavation and Foundation", "Substructure Work", "Framing", "Roofing", "Exterior Work", "Interior Work", "Mechanical, Electrical, and Plumbing (MEP) Work", "Interior Finishes", "Kitchen and Bathroom Installation", "Exterior Landscaping", "Quality Control and Inspections", "Final Touches", "Others"]
+  items = ["", "Others"]
 }
+
 var str = ""
 for (var item of items) {
   str += `<option value='${item}'>` + item + "</option>"
