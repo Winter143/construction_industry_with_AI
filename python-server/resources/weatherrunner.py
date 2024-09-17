@@ -35,22 +35,26 @@ class WeatherRunner:
         return new_csv
 
     def determine_weather(self, temp, humid):
-        if int(float(temp)) >= 22 and int(float(temp)) <= 27 and humid == "0.0":
-            weather = "Partly Cloudy"
-        elif int(float(temp)) >= 23 and int(float(temp)) <= 26 and int(float(humid)) >= 0.0 and int(float(humid)) <= 0.3:
-            weather = "Patchy rain possible"
-        elif int(float(temp)) >= 23 and int(float(temp)) <= 26 and int(float(humid)) >= 0.4 and int(float(humid)) <= 0.7:
-            weather = "Moderate rain at times"
-        elif int(float(temp)) >= 23 and int(float(temp)) <= 26 and int(float(humid)) >= 0.8 and int(float(humid)) <= 3.0:
+        temp = float(temp)
+        humid = float(humid)
+        
+        if 30 <= temp <= 32 and humid == 0.0:
             weather = "Clear"
-        elif int(float(temp)) >= 25 and int(float(temp)) <= 29 and int(float(humid)) >= 1.0 and int(float(humid)) <= 1.5:
+        elif 29 <= temp <= 30 and 0.0 <= humid <= 0.3:
+            weather = "Cloudy"
+        elif 27 <= temp < 29 and 0.0 <= humid <= 0.5:
+            weather = "Patchy rain possible"
+        elif 25 <= temp < 27 and 0.0 <= humid <= 0.5:
+            weather = "Moderate rain at times"
+        elif 24 <= temp < 26 and 0.0 <= humid <= 1.0:
             weather = "Heavy rain at times"
-        elif int(float(temp)) >= 26 and int(float(temp)) <= 35 and int(float(humid)) >= 2.0 and int(float(humid)) <= 5.0:
+        elif 20 <= temp < 26 and 1.0 <= humid <= 3.0:
             weather = "Moderate or heavy rain shower"
         else:
             weather = "Cloudy"
         
         return weather
+
 
     def process_weather_data(self):
         new_csv = self.process_csv()
