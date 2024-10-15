@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Projects Checklist</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" type="text/css" href="css1/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="css1/font-awesome.min.css" />
+  <link href="css1/style.css" rel="stylesheet" />
+  <link href="css1/responsive.css" rel="stylesheet" />
+</head>
+<style>
+  table {
+    font-family: arial, sans-serif;
+    color: white;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    background-color: rgb(0, 63, 118);
+  }
+  td{
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    color: black;
+  }
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .column {
+    float: left;
+    width: 50%;
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+</style>
+<body>
+  <div class="hero_area">
+    <header class="header_section" style="background-color: white;position: fixed;width: 100%;z-index: 1;">
+      <div class="header_bottom">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="main.html?verify=true">
+              <span>
+                <img src="images/header.png" style="height: 50px;">
+              </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="main.html?verify=true">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Log Out</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+  </div>
+  <br><br><br>
+  <section class="slider_section" style="border:5px solid gray;">
+    <div class="container" style="height: 300px;">
+      <div class="row" style="height: 300px;">
+        <div class="col-md-6" style="height: 300px;">
+          <div class="detail-box">
+            <br><br><br><br><br>
+            <h1 style="color: #0106b7;font-size: 280%;">
+              &emsp;List of Projects
+            </h1>
+          </div>
+        </div>
+        <div class="col-md-6" style="height: 300px;">
+          <img src="images/greeny.jpg" alt="" style="height: 300px;"/>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="slider_section" style="background-color: white;">
+    <div class="container" style="height: 30px;">
+    </div>
+  </section>
+  <div style="background-color: white">
+    <center>
+      <table style="width: 80%;" style="text-align: center;" id="client_list">
+        <thead>
+          <tr>
+              <th>Client</th>
+              <th>Project</th>
+              <th>Start Date</th>
+              <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </center>
+  </div>
+  <section class="slider_section" style="background-color: white;">
+    <div class="container" style="height: 50px;">
+    </div>
+  </section>
+  <section class="service_section layout_padding" id="sectionPart" style="display: none;">
+    <div class="container">
+      <div>
+        <h1 id="projectlabel"></h1>
+      </div>
+      <div class="row">
+        <div class="col-sm-3 mx-auto">
+          <div class="box" style="height: 90%;" onclick="editPage('project.html')">
+            <div class="img-box">
+              <img src="images/edit.png" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5 id="editproject">
+                Edit Project
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 mx-auto" id="pertBtn">
+          <div class="box" style="height: 90%;">
+            <div class="img-box">
+              <img src="images/sched.png" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5 id="schedulelabel">
+                Schedule (Diagram)
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 mx-auto">
+          <div class="box" style="height: 90%;" onclick="nextPage('manpower_assignment.html')">
+            <div class="img-box">
+              <img src="images/assignment.png" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5 id="manpowerlabel">
+                Man Power and Equipment Assignment
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 mx-auto">
+          <div class="box" style="height: 90%;" onclick="progressPage('history.html')">
+            <div class="img-box">
+              <img src="images/progress.png" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5 id="projectaccomlabel">
+                Progress Accomplishment
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 mx-auto">
+          <div class="box" style="height: 90%;" onclick="nextPage('documents.html')">
+            <div class="img-box">
+              <img src="images/document.png" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5 id="documentslabel">
+                Documents
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="service_section layout_padding" id="noSectionPart" style="display: none;">
+    <div class="container">
+      <div>
+        <h1 id="projectlabel2"></h1>
+      </div>
+    </div>
+  </section>
+  <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/display.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+</body>
+</html>
