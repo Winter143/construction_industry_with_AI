@@ -35,7 +35,7 @@ let sdate = params.get('startdate');
 var items;
 if (project.includes("ROAD")) {
   items = ["", "Site Preparation", "Earthworks and Grading", "Drainage and Utilities", "Subbase and Base Course Construction", "Paving", "Curbs, Gutters, and Sidewalks", "Guardrails and Barriers", "Traffic Control Devices", "Quality Control and Testing", "Final Touches", "Others"]
-} else if (project.includes("REPLACE")) {
+} else if (project.includes("TILE")) {
   items = ["", "Preparation", "Removing Damaged Tiles", "Preparing the Surface", "Applying Adhesive", "Placing the New Tile", "Grouting", "Cleaning and Finishing", "Sealing", "Final Inspection", "Others"]
 } else if (project.includes("BUILDING")) {
   items = ["", "Site Preparation", "Foundation Work", "Structural Framework", "Roof Construction", "Wall Construction", "Windows and Doors", "Mechanical, Electrical, and Plumbing (MEP) Work", "Interior Finishes", "Exterior Finishes", "Final Inspections and Handover", "Others"]
