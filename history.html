@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title id="title">Progress Accomplishment</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css1/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css1/font-awesome.min.css" />
+    <link href="css1/style.css" rel="stylesheet" />
+    <link href="css1/responsive.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="hero_area" id="tab" style="display: block;">
+      <header
+        class="header_section"
+        style="
+          background-color: white;
+          position: fixed;
+          width: 100%;
+          z-index: 1;
+          border: 3px solid black;
+        "
+      >
+        <div class="header_bottom">
+          <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+              <a class="navbar-brand">
+                <span>
+                  <img src="images/header.png" style="height: 50px" />
+                </span>
+              </a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class=""> </span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">Log Out</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+    </div>
+    <br><br><br><br><br>
+    <div>
+        <center>
+        <h1>Progress Accomplishment Report</h1>
+        <br>
+        <div id="progressDetails">
+            <b><label>CLIENT: </label></b>
+            <label id="clientname"></label>
+            <br>
+            <b><label>PROJECT: </label></b>
+            <label id="projectname"></label>
+            <br>
+            <b><label>STARTING DATE: </label></b>
+            <label id="startingdate"></label>
+        </div>
+        </center>
+    </div>
+    <br><br>
+    <div style="border: 5px solid gray;">
+        <br>
+        <form id="coveredPeriod">
+            <div style="margin-left: 100px;">
+                <b><label>ENTER COVERED PERIOD: </label></b>
+                <input type="text" id="period" name="period" style="width: 300px;"/>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <br>
+    </div>
+    <br><br>
+    <div>
+        <div id="historyList" style="margin-left: 100px;">
+            <b><h3>HISTORY</h3></b>
+            <br>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script type="module" src="js/history.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  </body>
+</html>

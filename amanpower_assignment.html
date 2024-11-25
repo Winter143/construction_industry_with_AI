@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Man Power, Equipment Assignment and Overtime Calculations</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" type="text/css" href="css1/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="css1/font-awesome.min.css" />
+  <link href="css1/style.css" rel="stylesheet" />
+  <link href="css1/responsive.css" rel="stylesheet" />
+</head>
+<style>
+  table {
+    font-family: arial, sans-serif;
+    color: white;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    background-color: rgb(0, 63, 118);
+  }
+  td{
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    color: black;
+  }
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .column {
+    float: left;
+    width: 50%;
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+</style>
+<body>
+  <div id="main-part" style="display: block;">
+    <div class="hero_area">
+      <header
+        class="header_section"
+        style="
+          background-color: white;
+          position: fixed;
+          width: 100%;
+          z-index: 1;
+          border: 3px solid black;
+        "
+      >
+        <div class="header_bottom">
+          <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+              <a class="navbar-brand">
+                <span>
+                  <img src="images/header.png" style="height: 50px" />
+                </span>
+              </a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class=""> </span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="menu.html?verify=true">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">Log Out</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+  <br><br>
+  <center><img id="logo" src="images/logo1.png" width="100" height="100" style="display: none;"></center>
+  <br>
+  <br>
+  <br>
+  <center><h1>Man Power, Equipment Assignment and Overtime Calculations</h1></center>
+  <br><br>
+  <div class="row" style="background-color: white; padding-left: 10.7%;">
+    <div class="column">
+      <form id="workerForm">
+        <table style="width: 100%;" id="worker-table">
+          <thead>
+            <tr>
+              <th>Workers</th>
+              <th>Quantity</th>
+              <th>Hours</th>
+              <th>Salary per hour</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <select id="worker" style="width: 100%;"></select>
+                <input
+                  type="text"
+                  id="labor"
+                  name="labor"
+                  style="width: 90%; display: none;"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="laborQuantity"
+                  name="laborQuantity"
+                  style="width: 40%"
+                  required
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="laborHours"
+                  name="laborHours"
+                  style="width: 40%"
+                  required
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="laborSalary"
+                  name="laborSalary"
+                  style="width: 40%"
+                  required
+                />
+                /hour
+              </td>
+              <td>
+                <button type="submit" class="btn btn-success">Add</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+      <section class="slider_section" style="background-color: white;">
+        <div class="container" style="height: 30px;">
+        </div>
+      </section>
+      <form id="OTForm">
+        <table style="width: 100%;" id="ot-table">
+          <thead>
+            <tr>
+              <th colspan="5">FOR OVERTIME CALCULATIONS ONLY</th>
+            </tr>
+          </thead>
+          <thead>
+              <tr>
+              <th>Workers</th>
+              <th>Quantity</th>
+              <th>Hours</th>
+              <th>OT per hour</th>
+              <th id="option"></th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <select id="otworker" style="width: 100%;"></select>
+                <input
+                  type="text"
+                  id="OTlabor"
+                  name="OTlabor"
+                  style="width: 90%; display: none;"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="OTlaborQuantity"
+                  name="OTlaborQuantity"
+                  style="width: 40%"
+                  required
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="OTlaborHours"
+                  name="OTlaborHours"
+                  style="width: 40%"
+                  required
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="OTlaborSalary"
+                  name="OTlaborSalary"
+                  style="width: 40%"
+                  required
+                />
+                /hour
+              </td>
+              <td>
+                <button id="addbtn" type="submit" class="btn btn-success">Add</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+      <section class="slider_section" style="background-color: white;">
+        <div class="container" style="height: 30px;">
+        </div>
+      </section>
+      <form id="equipmentForm">
+        <table style="width: 100%;" id="equipment-table">
+          <thead>
+            <tr>
+              <th>Equipments</th>
+              <th>Quantity</th>
+              <th>Days</th>
+              <th>Cost per day</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <select id="equip" style="width: 100%;"></select>
+                <input
+                  type="text"
+                  id="equipment"
+                  name="equipment"
+                  style="width: 90%; display: none;"
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="equipmentQuantity"
+                  name="equipmentQuantity"
+                  style="width: 40%"
+                  required
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="equipmentDays"
+                  name="equipmentDays"
+                  style="width: 40%"
+                  required
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="equipmentCost"
+                  name="equipmentCost"
+                  style="width: 40%"
+                  required
+                />
+                /day
+              </td>
+              <td>
+                <button type="submit" class="btn btn-success">Add</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+    <div class="column" style="padding-left: 60px;">
+      <section class="slider_section" style="background-color: white;">
+        <div class="container" style="height: 30px;">
+        </div>
+      </section>
+      <section class="slider_section" style="background-color: white;">
+        <div id="printbtn" class="container" style="height: 30px;">
+          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+          <input type="button" value="Print Calculations" onclick="printDiv()">
+        </div>
+      </section>
+      <section class="slider_section" style="background-color: white;">
+        <div class="container" style="height: 30px;">
+        </div>
+      </section>
+      <div class="row" style="background-color: white; padding-left: 10.7%;">
+        <table style="width: 75%;" id="result-table">
+            <thead>
+                <tr>
+                <th>Decision Support System</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                <th>Expenses Computation (Total Expenses)</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <table style="width: 75%;" id="total-table">
+          <tbody>
+          </tbody>
+        </table>
+        <table style="width: 75%;" id="ot-total-table"></table>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <section class="slider_section" style="background-color: white;">
+    <div class="container" style="height: 30px;">
+    </div>
+    </section>
+  </div>
+  <div>
+    <div id="signatories" style="margin-left: 50px; display: none;">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      Prepared by:
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      Approved by:    
+      <br>
+    </div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/amanpower.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script>
+    function printDiv () {
+      document.getElementById('main-part').style.display = "none";
+      document.getElementById('printbtn').style.display = "none";
+      document.getElementById('logo').style.display = "block";
+      document.getElementById('signatories').style.display = "block";
+      var opt = document.querySelectorAll('#option');
+      for (var a = 0; a < opt.length; a++) {
+        opt[a].style.display = 'none';
+      }
+      var add = document.querySelectorAll('#addbtn');
+      for (var b = 0; b < add.length; b++) {
+        add[b].style.display = 'none';
+      }
+      var remove = document.querySelectorAll('#removebtn');
+      for (var c = 0; c < remove.length; c++) {
+        remove[c].style.display = 'none';
+      }
+      var css = '@page { size: letter; } ',
+      head = document.head || document.getElementsByTagName('head')[0],
+      style = document.createElement('style');
+
+      style.type = 'text/css';
+      style.media = 'print';
+
+      if (style.styleSheet){
+        style.styleSheet.cssText = css;
+      } else {
+        style.appendChild(document.createTextNode(css));
+      }
+
+      head.appendChild(style);
+
+      window.print();
+      history.back();
+    }
+  </script>
+</body>
+</html>

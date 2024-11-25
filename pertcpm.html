@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>PERT CPM Diagram</title>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" type="text/css" href="css1/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="css1/font-awesome.min.css" />
+  <link href="css1/style.css" rel="stylesheet" />
+  <link href="css1/responsive.css" rel="stylesheet" />
+  <script type="text/javascript" src="https://code.jscharting.com/latest/jscharting.js"></script>
+  <script type="text/javascript" src="https://code.jscharting.com/latest/modules/types.js"></script>
+  <script src="js/pertcpm.js"></script>
+</head>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  /* Create two equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+  }
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 3px;
+    font-size: small;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  body {
+    height: 100%; 
+  }
+  div.scroll-container {
+  background-color: #202050;
+  overflow: auto;
+  white-space: nowrap;
+  padding-top: 75px;
+  }
+
+  div.scroll-container img {
+    padding: 5px;
+  }
+</style>
+<body>
+  <div id="main-part" style="display: block;">
+    <header class="header_section" style="position: fixed;width: 100%;z-index: 1;background-color: white;border: 3px solid black;">
+      <div class="header_bottom">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand">
+              <span>
+                <img src="images/header.png" style="height: 50px;">
+              </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Log Out</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <div class="scroll-container">
+      <img src="images/5.png" width="600" height="400">
+      <img src="images/1.png" width="600" height="400">
+      <img src="images/2.png" width="600" height="400">
+      <img src="images/3.png" width="600" height="400">
+      <img src="images/4.png" width="600" height="400">
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <img id="cpmImg" src="python-server/images/pertcpm.png" width="700" height="900" style="margin-left: 100px;position:relative;">
+      <div id="signatories" style="margin-left: 50px; display: none;">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        Prepared by:
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        Approved by:    
+        <br>
+      </div>
+    </div>
+    <div class="column">
+      <center><input id="cpmbtn" type="button" value="Print CPM" onclick="printDiv()"></center>
+      <br><br>
+      <img id="logo" src="images/logo1.png" width="100" height="100" style="margin-left: 280px; display: none;">
+      <br>
+      <center><img id="legend" src="images/legends2.png" style="height: 250px;"></center>
+      <br><br>
+      <center>
+      <table id="act_list">
+        <thead style="background-color: #1a1e9b;color:white;">
+          <tr>
+            <th>Item</th>
+            <th>Activity Name</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      </center>
+    </div>
+  </div>
+  <section class="slider_section" style="background-color: white;">
+    <div class="container" style="height: 30px;">
+    </div>
+  </section>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script>
+    function myPert() {
+      location.replace("pertcpm.html")
+    }
+    function getQueryParams() {
+      const params = Object.fromEntries(new URLSearchParams(location.search));
+      return params;
+    }
+    $(document).ready(function () {
+      var params = getQueryParams();
+      console.log(params);
+      var file = params.file;
+      var activities = "";
+      $("img#cpmImg").attr("src", "python-server/images/" + file + ".png");
+      for (const [key, value] of Object.entries(params)) {
+        if (key == "file") {
+          continue
+        }
+        if (key == "undefined") {
+          continue
+        }
+        activities += "<tr>";
+        activities += "<td>" + key; + "</td>";
+        activities += "<td>" + value; + "</td>";
+        activities += "<tr>";
+      }
+
+      $("#act_list").append(activities);
+    });
+    function printDiv () {
+      document.getElementById('main-part').style.display = "none";
+      document.getElementById('cpmbtn').style.display = "none";
+      document.getElementById('legend').style.display = "none";
+      document.getElementById('logo').style.display = "block";
+      document.getElementById('signatories').style.display = "block";
+      var css = '@page { size: legal landscape; margin-top: 2px; margin-bottom: 0px; } ',
+      head = document.head || document.getElementsByTagName('head')[0],
+      style = document.createElement('style');
+
+      style.type = 'text/css';
+      style.media = 'print';
+
+      if (style.styleSheet){
+        style.styleSheet.cssText = css;
+      } else {
+        style.appendChild(document.createTextNode(css));
+      }
+
+      head.appendChild(style);
+
+      window.print();
+      history.back();
+      }
+  </script>
+</body>
+</html>

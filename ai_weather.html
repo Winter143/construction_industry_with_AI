@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>AI Weather Forecast</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css1/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css1/font-awesome.min.css" />
+    <link href="css1/style.css" rel="stylesheet" />
+    <link href="css1/responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      color: white;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th {
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+      background-color: rgb(0, 63, 118);
+    }
+    td {
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+      color: black;
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    .column {
+      float: left;
+      width: 50%;
+    }
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  </style>
+  <body>
+    <div class="hero_area">
+      <header
+        class="header_section"
+        style="
+          background-color: white;
+          position: fixed;
+          width: 100%;
+          z-index: 1;
+        "
+      >
+        <div class="header_bottom">
+          <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+              <a class="navbar-brand">
+                <span>
+                  <img src="images/header.png" style="height: 50px" />
+                </span>
+              </a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class=""> </span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">Log Out</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+    </div>
+    <br /><br /><br />
+    <section class="slider_section" style="border: 5px solid gray">
+      <div class="container" style="height: 300px">
+        <div class="row" style="height: 300px">
+          <div class="col-md-6" style="height: 300px">
+            <div class="detail-box">
+              <br /><br /><br /><br /><br />
+              <h1 style="color: #0106b7; font-size: 280%">
+                &emsp;&emsp;&emsp;AI Weather Prediction
+              </h1>
+            </div>
+          </div>
+          <div class="col-md-6" style="height: 300px">
+            <img src="images/greeny.jpg" alt="" style="height: 300px" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="slider_section" style="background-color: white">
+      <div class="container" style="height: 30px"></div>
+    </section>
+    <center>
+      <div id="weatherOnline" style="height: 100%;">
+        <a class="weatherwidget-io" href="https://forecast7.com/en/13d76121d06/batangas/" data-label_1="BATANGAS" data-label_2="WEATHER" data-theme="weather_one" >BATANGAS WEATHER</a>
+      </div>
+    </center>
+    <section class="slider_section" style="background-color: white">
+      <div class="container" style="height: 30px"></div>
+    </section>
+    <section class="slider_section" style="background-color: white">
+      <div class="container" style="height: 300px">
+        <div class="row" style="height: 300px">
+          <div class="col-md-6" style="height: 300px">
+            <center><img src="images/plot.png" alt="" /></center>
+          </div>
+          <div class="col-md-6" style="height: 300px">
+            <center>
+              <table style="width: 80%">
+                <thead>
+                  <tr>
+                    <th
+                      class="py-4"
+                      colspan="4"
+                      style="
+                        text-align: center;
+                        background-color: rgb(75, 174, 228);
+                        color: black;
+                      "
+                      height="50"
+                    >
+                      <div style="display: flex">
+                        <label>Choose Date:</label>
+                        <input
+                          class="form-control mx-3"
+                          type="date"
+                          id="chosenDate"
+                          name="chosenDate"
+                          style="align-self: center"
+                        />
+                      </div>
+                    </th>
+                  </tr>
+                  <tr>
+                    <td
+                      colspan="4"
+                      id="currentDate"
+                      style="
+                        text-align: center;
+                        background-color: rgb(75, 174, 228);
+                        color: black;
+                      "
+                      height="50"
+                    ></td>
+                  </tr>
+                </thead>
+                <thead>
+                  <tr>
+                    <th
+                      style="
+                        text-align: center;
+                        background-color: rgb(140, 215, 255);
+                      "
+                      height="30"
+                    >
+                      Time
+                    </th>
+                    <th
+                      style="
+                        text-align: center;
+                        background-color: rgb(140, 215, 255);
+                      "
+                      height="30"
+                    >
+                      Temperature
+                    </th>
+                    <th
+                      style="
+                        text-align: center;
+                        background-color: rgb(140, 215, 255);
+                      "
+                      height="30"
+                    >
+                      Weather
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="data" style="text-align: center"></tbody>
+              </table>
+            </center>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script type="module" src="js/weather.js"></script>
+    <script>
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+    </script>
+  </body>
+</html>

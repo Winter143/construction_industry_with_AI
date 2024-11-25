@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title id="title">Progress Accomplishment</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css1/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css1/font-awesome.min.css" />
+    <link href="css1/style.css" rel="stylesheet" />
+    <link href="css1/responsive.css" rel="stylesheet" />
+  </head>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      color: white;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th {
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+      background-color: rgb(0, 63, 118);
+    }
+    td {
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+      color: black;
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    .column {
+      float: left;
+      width: 50%;
+    }
+    .container-table {
+      max-width: 80vw !important;
+    }
+    #result-table td {
+      text-align: left;
+    }
+  </style>
+  <body>
+    <div class="hero_area" id="tab" style="display: block;">
+      <header
+        class="header_section"
+        style="
+          background-color: white;
+          position: fixed;
+          width: 100%;
+          z-index: 1;
+          border: 3px solid black;
+        "
+      >
+        <div class="header_bottom">
+          <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+              <a class="navbar-brand">
+                <span>
+                  <img src="images/header.png" style="height: 50px" />
+                </span>
+              </a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class=""> </span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">Log Out</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+    </div>
+    <br>
+    <br>
+    <center><img id="logo" src="images/logo1.png" width="100" height="100" style="display: none;"></center>
+    <br>
+    <br>
+    <div>
+        <center>
+        <h1>Progress Report</h1>
+        <br>
+        <div id="progressDetails">
+          <b><label>CLIENT: </label></b>
+          <label id="clientname"></label>
+          <br>
+          <b><label>PROJECT: </label></b>
+          <label id="projectname"></label>
+          <br>
+          <b><label>COVERED PERIOD: </label></b>
+          <label id="startingdate"></label>
+          <br>
+          <input id="progressbtn" type="button" value="Print" onclick="printDiv()">
+        </div>
+        </center>
+    </div>
+    <br>
+    <div>
+      <button id="addprogress" type="submit" class="btn btn-success" style="display: block;float: right;margin-right: 230px;">Add Progress</button>
+    </div>
+    <div></div>
+      <button id="calculateprogress" type="submit" class="btn btn-primary" style="display: none;float: right;margin-right: 220px;">Calculate</button>
+    </div>
+    <br>
+    <center><div id="add_row" style="border-radius: 5px;background-color: rgb(242, 242, 242);padding: 20px;width: 30%;display: none;">
+      <form id="add_input" style="border: black;text-align: left;">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+                <b><label for="activityname">Activity Name: </label></b>
+                <select id="activityname" name="activityname" style="width: 100%;display: block;"></select>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6 mb-3">
+                  <b><label for="amount">Contract Amount: </label></b>
+                  <input type="text" id="amount" name="amount" style="width: 35%;"/>
+                  <br>
+                  <b><label for="previous">Previous (%): </label></b>
+                  <input type="number" id="previous" name="previous" style="width: 50%;"/>
+                  <br>
+                  <b><label for="thisperiod">This period (%): </label></b>
+                  <input type="number" id="thisperiod" name="thisperiod" style="width: 43%;"/>
+              </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div></center>
+    <section class="slider_section" style="background-color: white">
+      <div class="container" style="height: 30px"></div>
+    </section>
+    <div class="container container-table" style="background-color: white">
+      <table id="act-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Activity Name</th>
+            <th>Contract Amount</th>
+            <th>Percent Weight</th>
+            <th colspan="6">Progress Accomplishment</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th colspan="2">PREVIOUS</th>
+              <th colspan="2">THIS PERIOD</th>
+              <th colspan="2">CUMMULATIVE</th>
+              <th></th>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>%</th>
+              <th>AMOUNT</th>
+              <th>%</th>
+              <th>AMOUNT</th>
+              <th>%</th>
+              <th>AMOUNT</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div>
+      <div id="signatories" style="margin-left: 50px; display: none;">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        Prepared by:
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        Approved by:    
+        <br>
+      </div>
+    </div>
+    <section class="slider_section" style="background-color: white">
+      <div class="container" style="height: 30px"></div>
+    </section>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script type="module" src="js/progress.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+      function printDiv () {
+        document.getElementById('tab').style.display = "none";
+        document.getElementById('headersection').style.display = "none";
+        document.getElementById('progressbtn').style.display = "none";
+        document.getElementById('logo').style.display = "block";
+        document.getElementById('signatories').style.display = "block";
+        document.querySelector('#act-table > thead:nth-child(1) > tr > th:nth-child(6)').style.display = "none";
+        document.querySelector('#act-table > thead:nth-child(2) > tr > th:nth-child(8)').style.display = "none";
+        document.querySelector('#act-table > thead:nth-child(3) > tr > th:nth-child(11)').style.display = "none";
+        var del = document.querySelectorAll('button[name="remove"]');
+        for (var i = 0; i < del.length; i++) {
+          del[i].style.display = "none";
+        }
+        
+        window.print();
+        history.back();
+      }
+    </script>
+  </body>
+</html>
