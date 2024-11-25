@@ -1,0 +1,8 @@
+ac,pr,du,an
+A,-,2,Site Prep
+B,-,4,Foundation Excavation
+C,A,5,Concrete Pouring for Foundation
+D,B,4,Form Work Installation 
+E,B,3,Rebar Installation
+F,CD,7,Foundation Wall Construction 
+G,E,6,Slab on Grade
